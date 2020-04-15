@@ -3,6 +3,7 @@
 
 public class GildedRose {
     
+    let minQuality = 0
     let maxQuality = 50
     
     var items:[Item]
@@ -107,10 +108,13 @@ public class GildedRose {
         item.sellIn -= 1
     }
     
-    // check max quality
+    // check min quality and max quality
     func checkQuality(item: Item) {
         if item.quality > maxQuality {
             item.quality = maxQuality
+        }
+        if item.quality < minQuality {
+            item.quality = minQuality
         }
     }
 }
