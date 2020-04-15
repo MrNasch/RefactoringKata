@@ -1,6 +1,8 @@
 @testable import GildedRose
 import XCTest
 
+// starting at 17:02
+
 class GildedRoseTests: XCTestCase {
 
     func testFoo() {
