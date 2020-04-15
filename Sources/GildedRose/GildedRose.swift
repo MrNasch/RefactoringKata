@@ -1,4 +1,5 @@
 // start 18:00 pause 18:13
+// start again at 21:26
 
 public class GildedRose {
     
@@ -14,6 +15,9 @@ public class GildedRose {
     // update Quality
     public func updateQuality() {
         for i in 0..<items.count {
+            
+            
+            
             if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
                 if (items[i].quality > 0) {
                     if (items[i].name != "Sulfuras, Hand of Ragnaros") {
