@@ -25,9 +25,9 @@ public class GildedRose {
             case "Elixir of the Mongoose":
                 updateElixirOfMongoose(item: item)
             case "Sulfuras, Hand of Ragnaros":
-                print("nothing change")
+                updateSulfuras(item: item)
             case "Backstage passes to a TAFKAL80ETC concert":
-                print("quality +1 if more than 10 days +2 between 10 and 6 and + 3 between 5 and 0 then 0 after the show")
+                updateBackstage(item: item)
             case "Conjured Mana Cake":
                 print("quality -2  and -4 when after the date")
             default:
@@ -111,6 +111,26 @@ public class GildedRose {
             item.quality -= 1
         } else {
             item.quality -= 2
+        }
+        
+        item.sellIn -= 1
+    }
+    
+    // Sulfuras stay at 80 quality all the time
+    func updateSulfuras(item: Item) {
+        item.quality = 80
+    }
+    
+    // check backstage increase quality and drop after event
+    func updateBackstage(item: Item) {
+        if item.sellIn > 10 {
+            item.quality += 1
+        } else if item.sellIn <= 10 && item.sellIn > 5 {
+            item.quality += 2
+        } else if item.sellIn <= 5 && item.sellIn > 0 {
+            item.quality += 3
+        } else if item.sellIn <= 0 {
+            item.quality = 0
         }
         
         item.sellIn -= 1
