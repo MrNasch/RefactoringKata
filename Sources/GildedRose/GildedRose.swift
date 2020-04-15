@@ -23,7 +23,7 @@ public class GildedRose {
             case "Aged Brie":
                 updateAgedBrie(item: item)
             case "Elixir of the Mongoose":
-                print("quality -1")
+                updateElixirOfMongoose(item: item)
             case "Sulfuras, Hand of Ragnaros":
                 print("nothing change")
             case "Backstage passes to a TAFKAL80ETC concert":
@@ -85,6 +85,7 @@ public class GildedRose {
         }
     }
     
+    // check Dexterity vest sellIn and decrease by 1 if > 0 and by 2 < 0
     func updateDexterityVestQuality(item: Item) {
         if item.sellIn > 0 {
             item.quality -= 1
@@ -95,15 +96,23 @@ public class GildedRose {
         item.sellIn -= 1
     }
     
+    // check Aged Brie sellIn increase quality by 1
     func updateAgedBrie(item: Item) {
         if item.sellIn > 0 {
             item.quality += 1
+        }
+
+        item.sellIn -= 1
+    }
+    
+    // check Elixir of de mngoose sellIn and decrease by 1 then by 2 after the date
+    func updateElixirOfMongoose(item: Item) {
+        if item.sellIn > 0 {
+            item.quality -= 1
         } else {
-            item.quality += 2
+            item.quality -= 2
         }
         
         item.sellIn -= 1
     }
-    
-    
 }
