@@ -21,7 +21,7 @@ public class GildedRose {
             case "+5 Dexterity Vest":
                 updateDexterityVestQuality(item: item)
             case "Aged Brie":
-                print("quality +1")
+                updateAgedBrie(item: item)
             case "Elixir of the Mongoose":
                 print("quality -1")
             case "Sulfuras, Hand of Ragnaros":
@@ -86,13 +86,23 @@ public class GildedRose {
     }
     
     func updateDexterityVestQuality(item: Item) {
-               if item.sellIn > 0 {
-                   item.quality -= 1
-               } else {
-                   item.quality -= 2
-               }
-               
-               item.sellIn -= 1
+        if item.sellIn > 0 {
+            item.quality -= 1
+        } else {
+            item.quality -= 2
+        }
+        
+        item.sellIn -= 1
+    }
+    
+    func updateAgedBrie(item: Item) {
+        if item.sellIn > 0 {
+            item.quality += 1
+        } else {
+            item.quality += 2
+        }
+        
+        item.sellIn -= 1
     }
     
     
