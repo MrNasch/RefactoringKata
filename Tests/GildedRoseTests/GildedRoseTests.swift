@@ -129,7 +129,7 @@ class GildedRoseTests: XCTestCase {
     
     func testMax_Quality_NoError() {
     //Given
-        let items = [Item(name: "Aged Brie", sellIn: -1, quality: 49)]
+        let items = [Item(name: "Aged Brie", sellIn: -1, quality: 50)]
         let app = GildedRose(items: items)
     //When
         app.updateQuality()
@@ -138,16 +138,6 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(app.items.first?.quality, 50)
     }
     
-    func testMin_Quality_NoError() {
-    //Given
-        let items = [Item(name: "Elixir of the Mongoose", sellIn: -1, quality: 1)]
-        let app = GildedRose(items: items)
-    //When
-        app.updateQuality()
-    //Then
-        XCTAssertEqual(app.items.first?.sellIn, -2)
-        XCTAssertEqual(app.items.first?.quality, 0)
-    }
     
     static var allTests : [(String, (GildedRoseTests) -> () throws -> Void)] {
         return [
@@ -160,8 +150,7 @@ class GildedRoseTests: XCTestCase {
             ("testBackstage_IncreaseQualityBetween5And1Days_NoError", testBackstage_IncreaseQualityBetween5And1Days_NoError),
             ("testConjuredManaCake_DecreaseQuality_NoError", testConjuredManaCake_DecreaseQuality_NoError),
             ("testConjuredManaCake_DecreaseQualityTwiceWhen0Days_NoError", testConjuredManaCake_DecreaseQualityTwiceWhen0Days_NoError),
-            ("testMax_Quality_NoError", testMax_Quality_NoError),
-            ("testMin_Quality_NoError", testMin_Quality_NoError)
+            ("testMax_Quality_NoError", testMax_Quality_NoError)
         ]
     }
 }

@@ -3,7 +3,6 @@
 
 public class GildedRose {
     
-    let minQuality = 0
     let maxQuality = 50
     
     var items:[Item]
@@ -44,6 +43,8 @@ public class GildedRose {
             item.quality -= 2
         }
         
+        checkQuality(item: item)
+        
         item.sellIn -= 1
     }
     
@@ -52,6 +53,8 @@ public class GildedRose {
         if item.sellIn > 0 {
             item.quality += 1
         }
+        
+        checkQuality(item: item)
 
         item.sellIn -= 1
     }
@@ -63,6 +66,8 @@ public class GildedRose {
         } else {
             item.quality -= 2
         }
+        
+        checkQuality(item: item)
         
         item.sellIn -= 1
     }
@@ -84,6 +89,8 @@ public class GildedRose {
             item.quality = 0
         }
         
+        checkQuality(item: item)
+        
         item.sellIn -= 1
     }
     
@@ -95,6 +102,15 @@ public class GildedRose {
             item.quality -= 4
         }
         
+        checkQuality(item: item)
+        
         item.sellIn -= 1
+    }
+    
+    // check max quality
+    func checkQuality(item: Item) {
+        if item.quality > maxQuality {
+            item.quality = maxQuality
+        }
     }
 }
