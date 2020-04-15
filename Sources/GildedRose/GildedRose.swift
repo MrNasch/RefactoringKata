@@ -29,59 +29,10 @@ public class GildedRose {
             case "Backstage passes to a TAFKAL80ETC concert":
                 updateBackstage(item: item)
             case "Conjured Mana Cake":
-                print("quality -2  and -4 when after the date")
+                updateConjured(item: item)
             default:
                 break
             }
-            
-            
-//            if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
-//                if (items[i].quality > 0) {
-//                    if (items[i].name != "Sulfuras, Hand of Ragnaros") {
-//                        items[i].quality -= 1
-//                    }
-//                }
-//            } else {
-//                if (items[i].quality < 50) {
-//                    items[i].quality += 1
-//
-//                    if (items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
-//                        if (items[i].sellIn < 11) {
-//                            if (items[i].quality < 50) {
-//                                items[i].quality += 1
-//                            }
-//                        }
-//
-//                        if (items[i].sellIn < 6) {
-//                            if (items[i].quality < 50) {
-//                                items[i].quality += 1
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if (items[i].name != "Sulfuras, Hand of Ragnaros") {
-//                items[i].sellIn -= 1
-//            }
-//
-//            if (items[i].sellIn < 0) {
-//                if (items[i].name != "Aged Brie") {
-//                    if (items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
-//                        if (items[i].quality > 0) {
-//                            if (items[i].name != "Sulfuras, Hand of Ragnaros") {
-//                                items[i].quality -= 1
-//                            }
-//                        }
-//                    } else {
-//                        items[i].quality -= items[i].quality
-//                    }
-//                } else {
-//                    if (items[i].quality < 50) {
-//                        items[i].quality += 1
-//                    }
-//                }
-//            }
         }
     }
     
@@ -131,6 +82,17 @@ public class GildedRose {
             item.quality += 3
         } else if item.sellIn <= 0 {
             item.quality = 0
+        }
+        
+        item.sellIn -= 1
+    }
+    
+    // check conjured and decrease quality by 2 and by 4 after date
+    func updateConjured(item: Item) {
+        if item.sellIn > 0 {
+            item.quality -= 2
+        } else {
+            item.quality -= 4
         }
         
         item.sellIn -= 1
