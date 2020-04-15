@@ -19,7 +19,7 @@ public class GildedRose {
             // swich on all item name
             switch item.name {
             case "+5 Dexterity Vest":
-                print("quality -1")
+                updateDexterityVestQuality(item: item)
             case "Aged Brie":
                 print("quality +1")
             case "Elixir of the Mongoose":
@@ -33,7 +33,6 @@ public class GildedRose {
             default:
                 break
             }
-            
             
             
 //            if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
@@ -83,6 +82,18 @@ public class GildedRose {
 //                    }
 //                }
 //            }
-//        }
+        }
     }
+    
+    func updateDexterityVestQuality(item: Item) {
+               if item.sellIn > 0 {
+                   item.quality -= 1
+               } else {
+                   item.quality -= 2
+               }
+               
+               item.sellIn -= 1
+    }
+    
+    
 }
