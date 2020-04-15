@@ -1,5 +1,5 @@
 // start 18:00 pause 18:13
-// start again at 21:26
+// start again at 21:26 end at 22:52
 
 public class GildedRose {
     

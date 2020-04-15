@@ -19,6 +19,19 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(app.items.first?.quality, 19)
     }
     
+    func testDexterity_DecreaseTwiceQualityAfterDate_NoError() {
+    //Given
+        let items = [Item(name: "+5 Dexterity Vest", sellIn: 0, quality: 20)]
+        let app = GildedRose(items: items);
+    //When
+        app.updateQuality()
+    //Then
+        XCTAssertEqual(app.items.first?.sellIn, -1)
+        XCTAssertEqual(app.items.first?.quality, 18)
+    }
+    
+
+    
     func testElixirOfTheMongoose_DecreaseQuality_NoError() {
     //Given
         let items = [Item(name: "Elixir of the Mongoose", sellIn: 5, quality: 7)]
@@ -130,12 +143,12 @@ class GildedRoseTests: XCTestCase {
     
     func testMax_Quality_NoError() {
     //Given
-        let items = [Item(name: "Aged Brie", sellIn: -1, quality: 49)]
+        let items = [Item(name: "Aged Brie", sellIn: 2, quality: 50)]
         let app = GildedRose(items: items)
     //When
         app.updateQuality()
     //Then
-        XCTAssertEqual(app.items.first?.sellIn, -2)
+        XCTAssertEqual(app.items.first?.sellIn, 1)
         XCTAssertEqual(app.items.first?.quality, 50)
     }
     
